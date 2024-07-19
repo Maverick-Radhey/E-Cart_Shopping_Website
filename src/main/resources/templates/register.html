@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Page</title>
+
+</head>
+<body>
+	<section class="h-100 " style="background-color: #9A616D;">
+		<div class="container py-5 h-100">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col">
+					<div class="card card-registration my-4">
+						<div class="row g-0">
+							<div class="col-xl-6 d-none d-xl-block"
+								style="background-color: #dde3ed">
+								<img
+									src="img/sin1.jpg"
+									alt="Sample photo" class="img-fluid"
+									style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; width:100%; height:950px" />
+							</div>
+							<div class="col-xl-6">
+								<div class="card-body p-md-5 text-black">
+									<h3 class="mb-5 text-uppercase" style="color:  #51c851">
+										registration form</h3>
+										  <th:block th:if="${session.succMsg}">
+							<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+							<th:bolck th:text="${@commnServiceImpl.removeSessionMessage()}"></th:bolck>
+							</th:block>
+							
+							<th:block th:if="${session.errorMsg}">
+							<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+							<th:bolck th:text="${@commnServiceImpl.removeSessionMessage()}"></th:bolck>
+							</th:block>
+                                  <form action="/saveUser" enctype="multipart/form-data" method="post">
+									<div class="row">
+										<div class="col-md-6 mb-2">
+											<div data-mdb-input-init class="form-outline">
+												<input type="text" name="name" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1m">Full Name</label>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="number" name="number" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n">Mobile
+													Number</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="email" name="email" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1m1">Email</label>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="text" name="address" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">Address</label>
+											</div>
+										</div>
+										<div
+											class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+											<h5 class="mb-0 me-4" style="color:#cc9900">Gender:</h5>
+
+											<div class="form-check form-check-inline mb-0 me-4">
+												<input class="form-check-input" type="radio" 
+													name="inlineRadioOptions" value="option1" /> <label
+													class="form-check-label" for="femaleGender">Female</label>
+											</div>
+
+											<div class="form-check form-check-inline mb-0 me-4">
+												<input class="form-check-input" type="radio" 
+													name="inlineRadioOptions" value="option2" /> <label
+													class="form-check-label" for="maleGender">Male</label>
+											</div>
+
+											<div class="form-check form-check-inline mb-0">
+												<input class="form-check-input" type="radio"
+													name="inlineRadioOptions" value="option3" /> <label
+													class="form-check-label" for="otherGender">Other</label>
+											</div>
+
+										</div>
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="text" name="city" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">City</label>
+											</div>
+										</div>
+
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="text" name="state" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">State</label>
+											</div>
+										</div>
+
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="text" name="pincode" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">Pincode</label>
+											</div>
+										</div>
+
+										<div class="col-md-6 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="password" name="password" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">Password</label>
+											</div>
+										</div>
+
+										<div class="col-md-8 mb-3">
+											<div data-mdb-input-init class="form-outline">
+												<input type="password" name="cpassword" required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">Confirm
+													Password</label>
+											</div>
+										</div>
+
+										<div class="col-md-12 mb-4">
+											<div data-mdb-input-init class="form-outline">
+												<input type="file" name="img"  required
+													class="form-control form-control-lg" /> <label
+													class="form-label" for="form3Example1n1">Profile
+													Image</label>
+											</div>
+										</div>
+
+										<button type="submit"
+											class="btn bg-primary text-white col-md-12">Register</button>
+									</div>
+									<div class="text-center mt-3 fs-3 fw-bold">
+										have an account ?<a href="/signin" style="color: #ff3385">Login</a>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+
+
+</head>
+<body >
+<section class="vh-100" style="background-color: #9A616D;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="/img/edit2.jpg"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black shadow p-3 mb-5 bg-body-tertiary rounded" >
+
+      <div class="container-fluid p-5 mt-5">
+			<div class="row">
+
+				<div class="col-md-12">
+					<div class=" card card-sh">
+						<div
+							class="card-header custom-card-header text-center " style="color: #ad200e; background-color: #e6b9b3">
+							<p class="fs-4 fw-bold">Edit
+							Category</p> <th:block th:if="${session.succMsg}">
+							<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+							<th:bolck th:text="${@commnServiceImpl.removeSessionMessage()}"></th:bolck>
+							</th:block>
+							
+							<th:block th:if="${session.errorMsg}">
+							<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+							<th:bolck th:text="${@commnServiceImpl.removeSessionMessage()}"></th:bolck>
+							</th:block>
+							</div>
+						<div class="card-body">
+							<form action="/admin/updateCategory" method="post"
+								enctype="multipart/form-data">
+								<input type="hidden" name="id" th:value="${category.id}">
+								<div class="mb-3">
+									<label>Enter Ctegory</label> <input type="text" name="name" th:value="${category.name}"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Status</label>
+
+									<div class="form-check">
+										<input class="form-check-input" type="radio" th:checked="${category.isActive==true}" value="true"
+											name="isActive" id="flexRadioDefault1"> <label
+											class="form-check-label" for="flexRadioDefault1">
+											<h5 style="color:green">Active</h5> </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" th:checked="${category.isActive==false}"
+											value="false" name="isActive" id="flexRadioDefault2" >
+										<label class="form-check-label" for="flexRadioDefault2">
+											<h5 style="color:red">InActive</h5> </label>
+									</div>
+
+								</div>
+
+								<div class="mb-3">
+									<label>Upload Image</label> <input type="file" name="file"
+										class="form-control">
+								</div>
+								<img th:src="@{'/img/product/'+${category.imageName}}" width="100px" height="80px">
+								<button class="btn btn-success col-md-12 mt-2">Update
+									Category</button>
+							</form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</body>
+</html>
+
+

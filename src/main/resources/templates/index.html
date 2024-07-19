@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Index page</title>
+
+
+</head>
+<body style="background-color:#e1e4e8">
+
+	<section class="hello" style="background-color:#dfe4ed">
+		<!-- Start slider -->
+		<div id="carouselExample" class="carousel slide">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="img/s1.jpg" class="d-block w-100" alt="..."
+						height="600px">
+				</div>
+				<div class="carousel-item">
+					<img src="img/s5.jpg" class="d-block w-100" alt="..."
+						height="600px">
+				</div>
+				<div class="carousel-item">
+					<img src="img/cor2.jpg" class="d-block w-100" alt="..."
+						height="600px">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#carouselExample" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#carouselExample" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+		<!-- End slider -->
+
+		<!--Start category field  -->
+<div class="container-fluid">
+    <div class="row">
+        <p class="text-center fw-bold fs-4 mt-4" style="color: green">Category</p>
+        <div class="d-flex flex-wrap justify-content-center">
+            <!-- Use flex-wrap and justify-content-center to align categories -->
+            <div th:each="cat, c : ${categorys}" class="col-md-2">
+                <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body text-center">
+                        <img th:src="@{'/img/product/' + ${cat.imageName}}" width="100%" height="140px" alt="Category Image">
+                        <span th:text="${cat.name}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+		
+
+		<!-- End category field -->
+
+		<!--start latest product module  -->
+
+			<div class="container-fluid bg-light p-3 ">
+			<div class="row">
+				<p class="text-center fs-4 fw-bold" style="color: #3ca6a0">Recent Product</p>
+
+				<div class="col-md-3"  th:each="p:${recentProducts}">
+					<div class="card ">
+						<div class="card-body text-center">
+							<img th:src="@{'/img/product/'+${p.image}}" width="65px" height="140px" alt="Product Image"> 
+							<span th:text="${p.name}"></span>
+							
+
+						</div>
+					</div>
+				</div>
+</div>
+		</div>
+
+		
+		<!--end latest product module  -->
+		
+		<!--start new product module  -->
+	
+					<div class="container-fluid bg-light p-3 ">
+			<div class="row">
+				<p class="text-center fs-4 fw-bold" style="color: #3ca6a0">New Product</p>
+
+				<div class="col-md-3"  th:each="p:${newProducts}">
+					<div class="card ">
+						<div class="card-body text-center">
+							<img th:src="@{'/img/product/'+${p.image}}" width="65px" height="140px" alt="Product Image"> 
+							<span th:text="${p.name}"></span>
+							
+
+						</div>
+					</div>
+				</div>
+</div>
+		</div>
+	</section>
+	
+</body>
+</html>

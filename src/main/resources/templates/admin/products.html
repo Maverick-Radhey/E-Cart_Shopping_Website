@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html  lang="en"  xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="card mt-2 p-5">
+<div class="card-header text-center" style="background-color:#ccffcc">
+<p class="fs-4 fw-bold mt-2"style="color:#731978">View Products</p>
+<th:block th:if="${session.succMsg}">
+							<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+							<th:bolck th:text="${@commnServiceImpl.removeSessionMessage()}"></th:bolck>
+							</th:block>
+							
+							<th:block th:if="${session.errorMsg}">
+							<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+							<th:bolck th:text="${@commnServiceImpl.removeSessionMessage()}"></th:bolck>
+							</th:block>
+
+<div class="card-body">
+
+<table class="table table-success table-striped">
+  <thead>
+    <tr >
+      <th scope="col">SI NO</th>
+        <th scope="col"><i class="fa-solid fa-images"></i> Image</th>
+      <th scope="col">Title</th>
+      <th scope="col"><i class="fa-solid fa-layer-group"></i> Category</th>
+      <th scope="col"><i class="fa-solid fa-indian-rupee-sign"></i> Price</th>
+       <th scope="col"style="color:red"> Discount <i class="fa-solid fa-percent"></i></th>
+        <th scope="col"style="color:green"><i class="fa-duotone fa-percent"></i> Discount_Price</th>
+        <th scope="col">Status</th>
+        <th scope="col"><i class="fa-solid fa-boxes-stacked"></i> Stock</th>
+         <th scope="col" style="color:red"><i class="fa-solid fa-pen-fancy"></i> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="p,c:${products}">
+      <th scope="row">[[${c.count}]]</th>
+      <td><img th:src="@{'/img/product/'+${p.image}}" width="50px" height="55px"></td>
+      <td>[[${p.title}]]</td>
+      <td>[[${p.category}]]</td>
+       <td>[[${p.price}]]</td>
+        <td style="color:red">[[${p.discount}]] %</td>
+         <td style="color:#b30086"> <i class="fa-solid fa-indian-rupee-sign"></i> [[${p.discountPrice}]]</td>
+          <td>[[${p.isActive}]]</td>
+      <td>[[${p.stock}]]</td>
+      <td>
+      <a th:href="@{'/admin/editProduct/'+${p.id}}" class="btn btn-sm btn-primary mt-2"><i class="fa-solid fa-file-pen "></i> Edit</a>
+       <a  th:href="@{'/admin/deleteProduct/'+${p.id}}" class="btn btn-sm btn-danger mt-2">  <i class="fa-solid fa-trash"></i> Delete</a>
+      </td>
+    </tr>
+ 
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</section>
+</body>
+</html>

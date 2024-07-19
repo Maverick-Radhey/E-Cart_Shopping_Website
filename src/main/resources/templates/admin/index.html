@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container  p-5 mt-3">
+		<div class="row">
+			<p class="text-center fs-3 fw-bold" style="color: #ff6666">Admin
+				Dashboard</p>
+
+
+			<div class="col-md-4 mt-4">
+				<a href="/admin/addProduct" class="text-decoration-none">
+					<div class="card card-sh">
+						<div class="card-body text-center text-primary">
+							<i class="fa-solid fa-square-plus fa-3x text-primary"></i>
+							<h4 >Add Product</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 mt-4">
+				<a href="/admin/category" class="text-decoration-none">
+					<div class="card card-sh">
+						<div class="card-body text-center text-warning">
+							<i class="fa-solid fa-list fa-3x text-warning"></i>
+							<h4 >Add Category</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 mt-4">
+				<a href="/admin/products" class="text-decoration-none">
+					<div class="card card-sh">
+						<div class="card-body text-center text-success">
+							<i class="fa-solid fa-layer-group fa-3x text-success"></i>
+							<h4 >View Product</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 mt-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card card-sh">
+						<div class="card-body text-center text-success">
+							<i class="fa-solid fa-box-open fa-3x text-success"></i>
+							<h4 >Orders</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 mt-4">
+				<a href="/admin/users" class="text-decoration-none">
+					<div class="card card-sh">
+						<div class="card-body text-center text-danger">
+							<i class="fa-solid fa-users fa-3x text-danger"></i>
+							<h4 >Users</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 mt-4">
+				<a href="/contacts" class="text-decoration-none">
+					<div class="card card-sh">
+						<div class="card-body text-center text-parmiry">
+							<i class="fa-solid fa-user-plus fa-3x text-primary"></i>
+							<h4 >Contacts</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			</div>
+		</div>
+		
+	</section>
+</body>
+</html>
